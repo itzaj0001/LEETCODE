@@ -5,8 +5,6 @@ class Solution:
             if j in freq:
                 if abs(i-freq[j])<=k:
                     return True
-                else:
-                    freq[j] = i
             freq[j]=i
         return False
         
