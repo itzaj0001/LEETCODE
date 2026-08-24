@@ -7,19 +7,16 @@ class Solution:
             return mat
 
         lst = []
-        count = 1
-        x = []
+        current = []
         for i in range(row):
             for j in range(col):
-                if count>c:
-                    lst.append(x)
-                    count = 1
-                    x = []
-                if count<=c:
-                    x.append(mat[i][j])
-                    count+=1
-        lst.append(x)
+                current.append(mat[i][j])
+
+                if len(current)==c:
+                    lst.append(current)
+                    current=[]
         return lst
+
                 
                  
                 
