@@ -3,12 +3,12 @@ class Solution:
         n=len(arr)
         if n == 1:
             return [-1]
-        lst = [0]*n
+        lst = []
         maxi = -1
         for i in range(n-1,-1,-1):
-            lst[i] = maxi
+            lst.append(maxi)
             maxi = max(maxi,arr[i])
-        return lst
+        return lst[::-1]
             
             
 
