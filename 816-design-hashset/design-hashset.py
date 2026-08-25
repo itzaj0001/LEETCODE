@@ -1,21 +1,26 @@
 class MyHashSet:
 
     def __init__(self):
-        self.myset = []
+        self.myset = [[] for i in range(0,10)]
         
 
     def add(self, key: int) -> None:
-        if key not in self.myset:
-            self.myset.append(key)
+        index = key%10
+        if key not in self.myset[index]:
+            self.myset[index].append(key)
         
 
     def remove(self, key: int) -> None:
-        if key in self.myset:
-            self.myset.remove(key)
-
+        index = key%10
+        if key in self.myset[index]:
+            self.myset[index].remove(key)
+        
 
     def contains(self, key: int) -> bool:
-        return (key in self.myset)
+        index = key%10
+        return (key in self.myset[index])
+           
+
         
 
 
