@@ -1,6 +1,6 @@
 class Solution:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
-        lst = set()
+        lst = []
         n = len(nums)
         nums.sort()
         for i in range(n-3):
@@ -18,7 +18,7 @@ class Solution:
                     elif total>target:
                         l-=1
                     else:
-                        lst.add((nums[i],nums[j],nums[k],nums[l]))
+                        lst.append([nums[i],nums[j],nums[k],nums[l]])
                         k+=1
                         l-=1
 
@@ -26,5 +26,5 @@ class Solution:
                             k+=1
                         while k<l and nums[l] == nums[l+1]:
                             l-=1
-        return [list(i) for i in lst]
+        return lst
         
