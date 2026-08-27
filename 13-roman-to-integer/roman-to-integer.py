@@ -12,21 +12,8 @@ class Solution:
         num = 0
         n = len(s)
         for i in range(n):
-            if s[i]=="I"and i != n-1:
-                if s[i+1] == "V" or s[i+1] == "X":
-                    num-=1
-                else:
-                    num+=1
-            elif s[i]=="X" and i != n-1:
-                if s[i+1] == "L" or s[i+1] == "C":
-                    num-=10
-                else:
-                    num+=10
-            elif s[i]=="C" and i != n-1:
-                if s[i+1] == "D" or s[i+1] == "M":
-                    num-=100
-                else:
-                    num+=100
+            if i+1<n and freq[s[i]]<freq[s[i+1]]:
+                num-=freq[s[i]]
             else:
                 num+=freq[s[i]]
         return num
