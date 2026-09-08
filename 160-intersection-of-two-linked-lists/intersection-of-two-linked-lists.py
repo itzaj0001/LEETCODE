@@ -5,21 +5,15 @@
 #         self.next = None
 
 class Solution:
-    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
-        a = set()
-        temp = headA
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]: 
+        a = headA
+        b = headB
 
-        while temp:
-            a.add(temp)
-            temp = temp.next
+        while a != b:
+            a = a.next if a else headB
+            b = b.next if b else headA
 
-        temp = headB
-        while temp:
-            if temp in a:
-                return temp
-            temp = temp.next
-        return None
-        
+        return a
 
         
 
