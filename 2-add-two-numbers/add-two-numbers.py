@@ -11,44 +11,22 @@ class Solution:
         p1, p2 = l1, l2
         carry = 0
 
-        while p1 and p2:
-            x, y  = p1.val, p2.val
-            
+        while p1 or p2 or carry:
+            x = p1.val if p1 else 0
+            y = p2.val if p2 else 0
+
             summ = x + y + carry
             carry = summ // 10
-            node = ListNode(summ%10)
-            curr.next = node
-            curr = node
-            p1, p2 = p1.next, p2.next
 
-        while p1 or p2 or carry:
-
-            if not p1 and not p2:
-                node = ListNode(carry)
-                curr.next = node
-                break
-
-            elif not p1:
-                x, y  = 0, p2.val
-                summ = x + y + carry
-                carry = summ // 10
-                node = ListNode(summ%10)
-                curr.next = node
-                curr = node
-                p2 = p2.next
-            else:
-                x, y  = p1.val, 0
-                summ = x + y + carry
-                carry = summ // 10
-                node = ListNode(summ%10)
-                curr.next = node
-                curr = node
+            curr.next = ListNode(summ % 10)
+            curr = curr.next
+            
+            if p1:
                 p1 = p1.next
-        
+            if p2:
+                p2 = p2.next
 
         return dummy.next
-            
-
 
 
         
