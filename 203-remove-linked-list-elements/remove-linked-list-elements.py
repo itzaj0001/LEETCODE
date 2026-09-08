@@ -14,10 +14,9 @@ class Solution:
         while curr:
             if curr.val == val:
                 prev.next = curr.next
-                curr = curr.next 
-                continue
-            prev = curr
+            else:
+                prev = curr
+            
             curr = curr.next
 
         return dummy.next
-        
