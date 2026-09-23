@@ -5,24 +5,34 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def findDuplicate(self,node,lst,d):
-        if node == None:
-            return ""
+    def findDuplicate(self, node, lst, d, ids):
+        if node is None:
+            return 0
 
-        k = "(" + self.findDuplicate(node.left,lst,d) +")" + str(node.val) + "(" + self.findDuplicate(node.right,lst,d) +")"
+        left = self.findDuplicate(node.left, lst, d, ids)
+        right = self.findDuplicate(node.right, lst, d, ids)
 
-        d[k] = d.get(k,0) + 1
+        key = (left, node.val, right)
 
-        if d[k] == 2:
+        if key not in ids:
+            ids[key] = len(ids) + 1
+
+        curr_id = ids[key]
+
+        d[curr_id] = d.get(curr_id, 0) + 1
+
+        if d[curr_id] == 2:
             lst.append(node)
 
-        return k
+        return curr_id
 
 
     def findDuplicateSubtrees(self, root: TreeNode | None) -> list[TreeNode | None]:
         lst = []
         d = {}
-        self.findDuplicate(root,lst,d)
+        ids = {}
+
+        self.findDuplicate(root, lst, d, ids)
         return lst
         
 
