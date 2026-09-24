@@ -18,6 +18,5 @@ class Solution:
         
         if isBadVersion(low):
             return low
-        else:
-            return -1
+        
 
