@@ -16,7 +16,6 @@ class Solution:
         for i in range(1,n-1):
             water += min(l[i],r[i]) - height[i]
         
-        print(l,r)
         return water
 
 
