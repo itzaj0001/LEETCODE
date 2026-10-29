@@ -7,3 +7,4 @@ WHERE EXISTS (
     FROM STRING_SPLIT(p.conditions, ' ') s
     WHERE s.value LIKE 'DIAB1%'
 );
+
